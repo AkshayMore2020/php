@@ -227,5 +227,22 @@ class Cron extends CI_Controller
             echo "Not Del";
             }
     }
+public function updateRaceStatusDummy()
+    {
+            $currentDate = date("Y-m-d",strtotime("-1 day"));
+            // print_r($currentDate); die();
+            $where = array(
+                        'race_status'=>'0',
+                        'race_date<='=> $currentDate,
+                                );
+            // print_r($where); die();
+            $status = $this->car->updateData('tbl_create_race', $where, ['race_status'=>'3']);
+            // echo $this->db->last_query(); die();
+             if ($status) {
+            echo "success";
+            }else{
+            echo "Not Del";
+            }
+    }
 
 }
